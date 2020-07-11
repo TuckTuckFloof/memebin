@@ -1,5 +1,7 @@
 from random import randint
-from os import system
+from os import system, name
+from subprocess import call
+call('clear' if name == 'posix' else 'cls')
 
 def main():
     dice_choice = 0
@@ -23,6 +25,7 @@ def main():
             print('ValueError: Inputs must be numbered 1-7')
             main()
 
+        # Numbers in the roll function are just the size of the dice
         if dice_choice == 1:
             dice_roll(4)
         elif dice_choice == 2:
@@ -43,7 +46,7 @@ def main():
             exit()
         else:
             system('clear')
-            print('Value Error: Inputs must be numbered 1-7\n')
+            print('Value Error: Inputs must be numbered 1-8\n')
             main()
 
 # Rolls the dice, what else did you think it did, magic?
