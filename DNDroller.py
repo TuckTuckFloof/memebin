@@ -1,4 +1,4 @@
-from random import randint, randrange
+from random import randint
 from os import system
 
 def main():
@@ -23,28 +23,50 @@ def main():
             print('ValueError: Inputs must be numbered 1-7')
             main()
 
-        system('clear')
-
         if dice_choice == 1:
-            print('You rolled a {}\n'.format(randint(1, 4)))
+            dice_roll(4)
         elif dice_choice == 2:
-            print('You rolled a {}\n'.format(randint(1, 6)))
+            dice_roll(6)
         elif dice_choice == 3:
-            print('You rolled a {}\n'.format(randint(1, 8)))
+            dice_roll(8)
         elif dice_choice == 4:
-            print('You rolled a {}\n'.format(randint(1, 10)))
+            dice_roll(10)
         elif dice_choice == 5:
-            print('You rolled a {}\n'.format(randint(1, 12)))
+            dice_roll(12)
         elif dice_choice == 6:
-            print('You rolled a {}\n'.format(randint(1, 20)))
+            dice_roll(20)
         elif dice_choice == 7:
-            print('You rolled a {}\n'.format(randrange(10, 100, 10)))
+            dice_roll(100)
         elif dice_choice == 8:
-            print('Goodbye now!\n')
+            system('clear')
+            print('\nGoodbye now!\n')
             exit()
         else:
             system('clear')
             print('Value Error: Inputs must be numbered 1-7\n')
             main()
+
+# Rolls the dice, what else did you think it did, magic?
+def dice_roll(top):
+    adv_disadv = input('Are you at Advantage or Disadvantage?\n\t(A/D/NA)\n\n:')
+    roll = randint(1, top)
+    second_roll = randint(1, top)
+    system('clear')
+    if adv_disadv.upper() == 'A':
+        if roll > second_roll or roll == second_roll:
+            print('\nYou rolled a {}\n'.format(roll))
+        elif second_roll > roll:
+            print('\nYou rolled a {}\n'.format(second_roll))
+    elif adv_disadv.upper() == 'D':
+        if roll < second_roll or roll == second_roll:
+            print('\nYou rolled a {}\n'.format(roll))
+        elif second_roll < roll:
+            print('\nYou rolled a {}\n'.format(second_roll))
+    elif adv_disadv.upper() == 'NA':
+        print('\nYou rolled a {}\n'.format(roll))
+    else:
+        system('clear')
+        print('Please enter a valid input')
+        dice_roll(top)
 
 main()
