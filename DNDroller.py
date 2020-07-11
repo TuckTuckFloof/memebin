@@ -22,7 +22,7 @@ def main():
             # If you're running this on a windows system
             # Change 'clear' to 'cls'
             system('clear')
-            print('ValueError: Inputs must be numbered 1-7')
+            print('ValueError: Inputs must be numbered 1-8')
             main()
 
         # Numbers in the roll function are just the size of the dice
